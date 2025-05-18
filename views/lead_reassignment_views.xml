@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View for Lead Reassignment Wizard -->
+    <record id="view_lead_reassignment_wizard_form" model="ir.ui.view">
+        <field name="name">lead.reassignment.wizard.form</field>
+        <field name="model">lead.reassignment.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Reassign Lead">
+                <sheet>
+                    <group>
+                        <field name="lead_id"/>
+                        <field name="new_user_id"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_reassign" string="Reassign" type="object" class="btn-primary" data-hotkey="q"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action to open the wizard -->
+    <record id="action_lead_reassignment_wizard" model="ir.actions.act_window">
+        <field name="name">Lead Reassignment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lead.reassignment.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="crm.model_crm_lead"/>
+    </record>
+
+    <!-- Menu item for Lead Reassignment -->
+    <menuitem id="menu_lead_reassignment_wizard"
+        name="Lead Reassignment"
+        parent="crm.crm_menu_root"
+        action="action_lead_reassignment_wizard"
+        sequence="25"
+        groups="sales_team.group_sale_salesman"/>
+</odoo>

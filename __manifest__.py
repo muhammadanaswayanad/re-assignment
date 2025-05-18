@@ -1,18 +1,22 @@
 {
-    'name': 'Lead Re-assignment',
+    'name': 'CRM Lead Reassignment',
     'version': '1.0',
-    'summary': 'Allow users to reassign leads to another salesperson',
-    'description': 'Allow users in the "Sales / Own Documents Only" group to reassign leads to another salesperson using a wizard',
+    'summary': 'Allows salespeople to reassign leads',
+    'description': """
+        This module allows users in the "Sales / Own Documents Only" group
+        to reassign a lead to another salesperson even if they don't have
+        direct access to that lead.
+    """,
     'category': 'Sales/CRM',
     'author': 'Odoo Developer',
+    'website': '',
     'depends': ['crm'],
     'data': [
         'security/ir.model.access.csv',
-        'wizard/crm_lead_reassign_views.xml',  # Put wizard views BEFORE crm_lead_views.xml
-        'views/crm_lead_views.xml',
+        'views/lead_reassignment_views.xml',
     ],
     'installable': True,
-    'application': False,
     'auto_install': False,
+    'application': False,
     'license': 'LGPL-3',
 }
