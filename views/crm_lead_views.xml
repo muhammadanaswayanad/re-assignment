@@ -9,6 +9,7 @@
             <xpath expr="//button[@name='action_schedule_meeting']" position="after">
                 <button name="action_open_reassign_wizard" string="Reassign" 
                     type="object" class="btn-primary"
+                    icon="fa-exchange-alt"
                     groups="sales_team.group_sale_salesman"/>
             </xpath>
         </field>
