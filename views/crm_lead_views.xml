@@ -7,10 +7,11 @@
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//button[@name='action_schedule_meeting']" position="after">
-                <button name="action_open_reassign_wizard" string="Reassign" 
+                <button name="action_open_reassign_wizard"
                     type="object" class="btn-primary"
-                    icon="fa-exchange-alt"
-                    groups="sales_team.group_sale_salesman"/>
+                    groups="sales_team.group_sale_salesman">
+                    <i class="fa fa-random" aria-hidden="true"/> Reassign
+                </button>
             </xpath>
         </field>
     </record>
