@@ -13,7 +13,8 @@
     'depends': ['crm'],
     'data': [
         'security/ir.model.access.csv',
-        'views/lead_reassignment_views.xml',
+        'views/crm_lead_views.xml',
+        'data/ir_cron_data.xml',
     ],
     'installable': True,
     'auto_install': False,

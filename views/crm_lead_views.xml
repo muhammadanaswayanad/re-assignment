@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Add Reassign button to Lead form view -->
+    <record id="crm_lead_view_form_inherit_reassignment" model="ir.ui.view">
+        <field name="name">crm.lead.view.form.inherit.reassignment</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_schedule_meeting']" position="after">
+                <button name="action_open_reassign_wizard" string="Reassign" 
+                    type="object" class="btn-primary"
+                    groups="sales_team.group_sale_salesman"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Form View for Lead Reassignment Wizard -->
+    <record id="view_lead_reassignment_wizard_form" model="ir.ui.view">
+        <field name="name">lead.reassignment.wizard.form</field>
+        <field name="model">lead.reassignment.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Reassign Lead">
+                <sheet>
+                    <group>
+                        <field name="lead_id"/>
+                        <field name="new_user_id"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_request_reassignment" string="Request Reassignment" 
+                        type="object" class="btn-primary" data-hotkey="q"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Lead Reassignment List View -->
+    <record id="view_lead_reassignment_tree" model="ir.ui.view">
+        <field name="name">lead.reassignment.tree</field>
+        <field name="model">lead.reassignment</field>
+        <field name="arch" type="xml">
+            <tree string="Lead Reassignments">
+                <field name="lead_id"/>
+                <field name="new_user_id"/>
+                <field name="requested_by"/>
+                <field name="create_date"/>
+                <field name="state" decoration-success="state == 'done'" 
+                    decoration-danger="state == 'failed'" 
+                    decoration-info="state == 'pending'"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Lead Reassignment Form View -->
+    <record id="view_lead_reassignment_form" model="ir.ui.view">
+        <field name="name">lead.reassignment.form</field>
+        <field name="model">lead.reassignment</field>
+        <field name="arch" type="xml">
+            <form string="Lead Reassignment">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="lead_id"/>
+                            <field name="new_user_id"/>
+                        </group>
+                        <group>
+                            <field name="requested_by"/>
+                            <field name="create_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Lead Reassignment Action -->
+    <record id="action_lead_reassignment" model="ir.actions.act_window">
+        <field name="name">Lead Reassignments</field>
+        <field name="res_model">lead.reassignment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No lead reassignment requests yet
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu for Lead Reassignments (for administrators to monitor) -->
+    <menuitem id="menu_lead_reassignment"
+        name="Lead Reassignments"
+        parent="crm.crm_menu_config"
+        action="action_lead_reassignment"
+        sequence="20"
+        groups="sales_team.group_sale_manager"/>
+</odoo>
