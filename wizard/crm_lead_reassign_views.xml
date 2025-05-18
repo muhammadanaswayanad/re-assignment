@@ -23,6 +23,6 @@
         <field name="res_model">crm.lead.reassign.wizard</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
-        <field name="binding_model_id" ref="crm.model_crm_lead"/>
     </record>
+</odoo>
 </odoo>

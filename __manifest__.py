@@ -8,8 +8,8 @@
     'depends': ['crm'],
     'data': [
         'security/ir.model.access.csv',
+        'wizard/crm_lead_reassign_views.xml',  # Put wizard views BEFORE crm_lead_views.xml
         'views/crm_lead_views.xml',
-        'wizard/crm_lead_reassign_views.xml',
     ],
     'installable': True,
     'application': False,
