@@ -9,8 +9,8 @@
                 <button name="%(re-assignment.action_crm_lead_reassign)d" 
                         type="action" 
                         string="Re-Assign" 
-                        groups="sales_team.group_sale_salesman" 
-                        attrs="{'invisible': [('user_id', '!=', uid)]}"
+                        groups="sales_team.group_sale_salesman"
+                        invisible="user_id != uid"
                         class="oe_highlight"/>
             </xpath>
         </field>
